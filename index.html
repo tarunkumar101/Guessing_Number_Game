@@ -1,0 +1,64 @@
+<html>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="Styles/styles.css">
+        
+        <title>Number Guessing Game</title>
+        
+        <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                    const submitBtn = document.getElementById('submitBtn');
+
+                    const minNumber = 1;
+                    const maxNumber = 10;
+                    let targetNumber = generateRandomNumber(minNumber, maxNumber);
+
+                    submitBtn.addEventListener('click', function() {
+                        const guessInput = document.getElementById('guessInput');
+                        const userGuess = parseInt(guessInput.value);
+
+                        if (userGuess === targetNumber) {
+                        alert('Congratulations! Your guess is correct!');
+                        targetNumber = generateRandomNumber(minNumber, maxNumber);
+                        guessInput.value = '';
+                        } else {
+                        alert('Sorry, your guess is wrong. Try again.');
+                        guessInput.value = '';
+                        }
+                    });
+
+                    function generateRandomNumber(min, max) {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+                    });
+
+        </script>
+
+    </head>
+
+    <body>
+
+
+        <div class="container">
+
+            <h1>Number Guessing Game</h1>
+
+            <p>Guess a number between 1 and 10</p>
+
+            <input type="number" id="guessInput" min="1" max="10">
+
+            <button id="submitBtn">Submit Guess</button>
+
+            <p id="result"></p>
+
+        </div>
+
+        <script src="script.js"></script>
+
+    </body>
+
+</html>
